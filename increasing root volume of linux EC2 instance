@@ -1,0 +1,27 @@
+By using below steps you can grow or increase the volume size of root as well as EBS Volume for Linux Instance.
+
+Step 1: To Check the current volume size and attach device type below command 
+fdisk -l
+
+Step 2: By using below command it will show the drive volume size.
+df -h
+
+Step 3: Fisrt we need to identify the which kind of file system you have on your system to know just type below command it will show
+        the entry of devices and their file System.
+        
+cat /etc/fstab
+
+Step 4: To grow the root volume or EBS Volume type below command
+Syntax : growpart <device_name> 1
+
+growpart /dev/xvda 1
+
+Step 5: Now run below command to grow the file system
+xfs_growfs -d /
+
+Note: xfs_growfs : xfs is file system name 
+      / : slash is the root directory where it is mounted you can change it as per your mounted location.
+      
+Step 6: Now you can run below command to check your volume is grown or incresed or not.
+
+df -kh
